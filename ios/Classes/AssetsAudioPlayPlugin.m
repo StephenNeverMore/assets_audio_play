@@ -28,6 +28,8 @@ static id<FlutterPluginRegistrar> mRegistrar;
       [self playAudio: call result:result];
   } else if([@"pause" isEqualToString:call.method]){
       [self pauseAudio:call result:result];
+  } else if([@"release" isEqualToString:call.method]){
+      [self releaseAudio:call result:result];
   } else {
       result(FlutterMethodNotImplemented);
   }
@@ -52,4 +54,8 @@ static id<FlutterPluginRegistrar> mRegistrar;
     }
 }
 
+- (void)releaseAudio: (FlutterMethodCall*)call result:(FlutterResult)result {
+    if(self.audioPlayer != nil){
+    }
+}
 @end

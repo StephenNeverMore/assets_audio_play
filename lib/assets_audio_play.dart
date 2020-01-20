@@ -22,4 +22,9 @@ class AssetsAudioPlay {
     final int result = await _channel.invokeMethod('pause');
     return result;
   }
+
+  static Future<int> release() async {
+    final int result = await _channel.invokeMethod('release');
+    return result;
+  }
 }

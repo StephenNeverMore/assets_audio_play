@@ -51,6 +51,8 @@ public class AssetsAudioPlayPlugin implements FlutterPlugin, MethodCallHandler {
             playAudio(call, result);
         } else if (call.method.equals("pause")) {
             pauseAudio(call, result);
+        } else if (call.method.equals("release")) {
+            releasePlayer(result);
         } else {
             result.notImplemented();
         }
@@ -58,6 +60,11 @@ public class AssetsAudioPlayPlugin implements FlutterPlugin, MethodCallHandler {
 
     private void pauseAudio(MethodCall call, Result result) {
         mediaPlayer.pause();
+        result.success(1);
+    }
+
+    private void releasePlayer(Result result) {
+        mediaPlayer.reset();
         result.success(1);
     }
 
@@ -69,6 +76,7 @@ public class AssetsAudioPlayPlugin implements FlutterPlugin, MethodCallHandler {
             return;
         }
         try {
+            mediaPlayer.reset();
             AssetManager assets = context.getResources().getAssets();
             AssetFileDescriptor assetFileDescriptor = assets.openFd("flutter_assets/" + path);
             mediaPlayer.setDataSource(assetFileDescriptor.getFileDescriptor(),

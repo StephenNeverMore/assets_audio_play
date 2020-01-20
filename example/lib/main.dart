@@ -72,7 +72,16 @@ class _MyAppState extends State<MyApp> {
                     AssetsAudioPlay.pause();
                   },
                   icon: Icon(Icons.pause),
-                  label: Text("Pause"))
+                  label: Text("Pause")),
+              SizedBox(
+                height: 30,
+              ),
+              RaisedButton.icon(
+                  onPressed: () {
+                    AssetsAudioPlay.release();
+                  },
+                  icon: Icon(Icons.delete),
+                  label: Text("Reset"))
             ],
           ),
         ),
