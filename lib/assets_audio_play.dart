@@ -6,24 +6,24 @@ class AssetsAudioPlay {
   static const MethodChannel _channel =
       const MethodChannel('assets_audio_play');
 
-  static Future<String> get platformVersion async {
+  static Future<String?> get platformVersion async {
     final String version = await _channel.invokeMethod('getPlatformVersion');
     return version;
   }
 
-  static Future<int> play(String path) async {
+  static Future<int?> play(String path) async {
     final int result = await _channel.invokeMethod('play', <String, dynamic>{
       "path": path,
     });
     return result;
   }
 
-  static Future<int> pause() async {
+  static Future<int?> pause() async {
     final int result = await _channel.invokeMethod('pause');
     return result;
   }
 
-  static Future<int> release() async {
+  static Future<int?> release() async {
     final int result = await _channel.invokeMethod('release');
     return result;
   }
